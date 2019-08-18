@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+rm -rf dst
+rm -rf outputs
+mkdir dst
+mkdir outputs
+node src/main.js

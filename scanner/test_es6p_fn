@@ -1,0 +1,10 @@
+NAME=$(echo $1 | cut -d '.' -f 3)
+echo Named $NAME
+export NO_ES7=1
+export FN_NAME="$1";
+export FN_CLEAR="delete $1;"
+export IMPORT="var dmp = require('./es6polyfill.js'); $1 = dmp.${NAME};";
+export NUM_ARGS="$2"
+
+echo "Testing $1"
+expoSE generic_harness >> $3/$1

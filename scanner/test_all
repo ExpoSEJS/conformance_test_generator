@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+rm -rf ./$2/
+mkdir $2
+
+#export EXPOSE_PRINT_PATHS=1
+
+# Arrays
+./$1 "Array.from" "3" $2
+./$1 "Array.of" "1" $2
+./$1 "Array.prototype.fill" "2" $2
+./$1 "Array.prototype.filter" "1" $2
+./$1 "Array.prototype.findIndex" "1" $2
+./$1 "Array.prototype.find" "1" $2
+./$1 "Array.prototype.forEach" "1" $2 
+./$1 "Array.prototype.includes" "1" $2
+./$1 "Array.prototype.reduce" "2" $2
+./$1 "Array.prototype.some" "1" $2
+
+# Strings
+./$1 "String.prototype.endsWith" "1" $2
+./$1 "String.prototype.includes" "2" $2
+./$1 "String.prototype.padEnd" "2" $2
+./$1 "String.prototype.padStart" "2" $2
+./$1 "String.prototype.repeat" "2" $2
+./$1 "String.prototype.startsWith" "2" $2 
+./$1 "String.prototype.trim" "2" $2

@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+rm -rf ./results/
+mkdir results
+
+export NO_ES7=1
+export EXPOSE_PRINT_PATHS=1
+
+# Arrays
+./test_mdn_fn "Array.from" "3"
+./test_mdn_fn "Array.of" "1"
+./test_mdn_fn "Array.prototype.fill" "2"
+./test_mdn_fn "Array.prototype.filter" "1"
+./test_mdn_fn "Array.prototype.findIndex" "1"
+./test_mdn_fn "Array.prototype.find" "1"
+./test_mdn_fn "Array.prototype.forEach" "1"
+./test_mdn_fn "Array.prototype.includes" "1"
+./test_mdn_fn "Array.prototype.reduce" "2"
+./test_mdn_fn "Array.prototype.some" "1"
+
+# Strings
+./test_mdn_fn "String.prototype.endsWith" "1"
+./test_mdn_fn "String.prototype.includes" "2"
+./test_mdn_fn "String.prototype.padEnd" "2"
+./test_mdn_fn "String.prototype.padStart" "2"
+./test_mdn_fn "String.prototype.repeat" "2"
+./test_mdn_fn "String.prototype.startsWith" "2"
+./test_mdn_fn "String.prototype.trim" "2"

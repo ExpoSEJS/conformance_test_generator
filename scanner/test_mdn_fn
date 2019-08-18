@@ -1,0 +1,7 @@
+export FN_NAME="$1";
+export FN_CLEAR="delete $1;"
+export IMPORT="require('./mdn_pfills/$1')";
+export NUM_ARGS="$2"
+
+echo "Testing $1"
+expoSE generic_harness >> $3/$1

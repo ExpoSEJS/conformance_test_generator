@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+cat $1 | grep -P '\[!\]\W*Diverge' | sort | uniq
+cat $1 | grep -P '\[!\]\W*Diverge' | wc -l
+cat $1 | grep -P '\[!\]\W*Diverge' | sort | uniq | wc -l

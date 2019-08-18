@@ -1,0 +1,5 @@
+export FN_NAME="String.prototype.includes";
+export FN_CLEAR="delete String.prototype.includes;"
+export IMPORT="./mdn_pfills/String.prototype.includes";
+export NUM_ARGS="3"
+expoSE generic_harness.js
