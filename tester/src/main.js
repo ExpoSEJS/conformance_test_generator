@@ -88,4 +88,14 @@ function doTest(methodName, input) {
   runTest(firefox, firefoxRunner);
 }
 
-doTest('String.prototype.includes', '\'bob\', [\'hello\']');
+const readline = require('readline');
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+  terminal: false
+});
+
+rl.on('line', function(line) {
+  const details = JSON.parse(line);
+  doTest(details.method, details.input);
+});
