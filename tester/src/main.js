@@ -10,7 +10,6 @@ function generateNodeTest(methodName, methodInput, codeToLoadPolyfill) {
                     } catch (e) {\n \
                       console.log('FN THROW ERR:' + e);\n \
                     }`;
-
   return template;
 }
 
@@ -52,12 +51,17 @@ function runTest(test, runner) {
 }
 
 function nodeJsRunner(testcase) {
-  console.log(`Launching ${testcase}`);
+  console.log(`Launching Node: ${testcase}`);
   return child_process.spawnSync('node', [testcase]).stdout.toString();
 }
 
+function quickJsRunner(testcase) {
+  console.log(`Launching QJS: ${testcase}`);
+  return child_process.spawnSync('qjs', [testcase]).stdout.toString();
+}
+
 function firefoxRunner(testcase) {
-  console.log(`Launching ${testcase}`);
+  console.log(`Launching FF: ${testcase}`);
   return child_process.spawnSync('firefox', ['-console', testcase]).stdout.toString();
 }
 
@@ -66,7 +70,8 @@ function writeTest(test, suffix) {
   const newTestFilename = `dst/${numberOfWrittenTests}.${suffix}`;
   fs.writeFileSync(newTestFilename, test);
   numberOfWrittenTests += 1;
-  return newTestFilename;
+  child_process.spawnSync('browserify', [newTestFilename, '-o', newTestFilename + '.rewritten.js']);
+  return newTestFilename + '.rewritten.js';
 }
 
 function doTest(methodName, input) {
@@ -76,6 +81,10 @@ function doTest(methodName, input) {
 
   runTest(coreJs, nodeJsRunner);
   runTest(mdnPolyfill, nodeJsRunner);
+
+  runTest(coreJs, quickJsRunner);
+  runTest(mdnPolyfill, quickJsRunner);
+
   runTest(firefox, firefoxRunner);
 }
 
