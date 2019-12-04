@@ -66,6 +66,7 @@ function firefoxRunner(testcase) {
 }
 
 let numberOfWrittenTests = 0;
+
 function writeTest(test, suffix) {
   const newTestFilename = `dst/${numberOfWrittenTests}.${suffix}`;
   fs.writeFileSync(newTestFilename, test);
@@ -79,16 +80,12 @@ function doTest(methodName, input) {
   const mdnPolyfill = writeTest(generateNodeTest(methodName, input, `require('mdn-polyfills/${methodName}');`), 'js');
   const firefox = writeTest(generateFirefoxTest(methodName, input), 'html');
 
-  runTest(coreJs, nodeJsRunner);
-  runTest(mdnPolyfill, nodeJsRunner);
-
-  runTest(coreJs, quickJsRunner);
-  runTest(mdnPolyfill, quickJsRunner);
-
-  runTest(firefox, firefoxRunner);
+  const outputs = [runTest(coreJs, nodeJsRunner), runTest(mdnPolyfill, nodeJsRunner), runTest(coreJs, quickJsRunner), runTest(mdnPolyfill, quickJsRunner), runTest(firefox, firefoxRunner)];
+  console.log('Test Outputs: ' + JSON.stringify(outputs));
 }
 
 const readline = require('readline');
+
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
