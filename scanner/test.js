@@ -8,6 +8,12 @@ function test_identity(f1, f2, base, args) {
 	var v1, v2;
 
 	console.log('Executing with base ' + base + ' and arguments ' + args);
+  console.log('!-!-!');
+  console.log(JSON.stringify({
+    'base': base,
+    'args': args
+  }));
+  console.log('!-!-!');
 
 	try {
 		v1 = f1.apply(base, args);

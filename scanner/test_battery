@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-./test_all ./test_cjs_fn ./results_cjs/
-./test_all ./test_es6p_fn ./results_esp6/
-./test_all ./test_mdn_fn ./results_mdn/
+EXPOSE_PRINT_PATHS=1 ./test_all ./test_cjs_fn ./results_cjs/
+EXPOSE_PRINT_PATHS=1 ./test_all ./test_es6p_fn ./results_esp6/
+EXPOSE_PRINT_PATHS=1 ./test_all ./test_mdn_fn ./results_mdn/
