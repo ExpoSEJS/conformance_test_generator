@@ -66,6 +66,11 @@ function quickJsRunner(testcase) {
   return child_process.spawnSync('qjs', [testcase]).stdout.toString();
 }
 
+function spidermonkeyRunner(testcase) {
+  console.log(`Launching SpiderMonkey: ${testcase}`);
+  return child_process.spawnSync('js59', [testcase]).stdout.toString();
+}
+
 function firefoxRunner(testcase) {
   console.log(`Launching FF: ${testcase}`);
   return child_process.spawnSync('firefox', ['-console', testcase]).stdout.toString();
@@ -82,12 +87,17 @@ function writeTest(test, suffix) {
 }
 
 function doTest(methodName, input) {
-  const nativeJs = writeTest(generateNodeTest(methodName, input), 'js');
-  const coreJs = writeTest(generateNodeTest(methodName, input, 'require(\'core-js\')'), 'js');
-  const mdnPolyfill = writeTest(generateNodeTest(methodName, input, `require('mdn-polyfills/${methodName}');`), 'js');
-//  const firefox = writeTest(generateFirefoxTest(methodName, input), 'html');
 
-  const outputs = [runTest(nativeJs, nodeJsRunner), runTest(coreJs, nodeJsRunner), runTest(mdnPolyfill, nodeJsRunner), runTest(nativeJs, quickJsRunner), runTest(coreJs, quickJsRunner), runTest(mdnPolyfill, quickJsRunner)];
+  let tests = [writeTest(generateNodeTest(methodName, input), 'js'), writeTest(generateNodeTest(methodName, input, 'require(\'core-js\')'), 'js'), writeTest(generateNodeTest(methodName, input, `require('mdn-polyfills/${methodName}');`), 'js')]; 
+  let outputs = [];
+
+  for (let testCase of tests) {
+    outputs.push(runTest(testCase, nodeJsRunner));
+    outputs.push(runTest(testCase, quickJsRunner));
+    outputs.push(runTest(testCase, spidermonkeyRunner));
+    //runTest(testCase, spiderMonkey);
+  }
+
   console.log('Test Outputs: ' + JSON.stringify(outputs));
 }
 
