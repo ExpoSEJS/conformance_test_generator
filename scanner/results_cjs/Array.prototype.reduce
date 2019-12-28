@@ -36,11 +36,14 @@ There is no babel loaded
 There is no babel loaded
 There is no babel loaded
 [1000D[0K[|] [1 done /0 queued / 0 running / 1 errors / 0% coverage ] ***
-[+] {"_bound":0} took 1.973s
-[!] Exception E: SyntaxError: Unexpected end of JSON input of test data on 
-[!] Error extracting final output - a fatal error must have occured
+[+] {"_bound":0} took 1.921s
+[!] TypeError: args.filter(...).reduce is not a function
 [!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"_bound":0}'
 [!] Stats
+[+] General Function Call: 72
+[+] Modeled Function Call: {"#call":2,"#Object":1,"#push":1,"#test":1,"#random":1}
+[+] Symbolic Values: 1
+[+] Symbolic Primitives: 1
 [!] Done
 [+] Total Lines Of Code 0
 [+] Total Coverage: NaN%

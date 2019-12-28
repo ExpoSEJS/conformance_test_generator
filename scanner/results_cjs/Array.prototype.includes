@@ -4,12 +4,22 @@ There is no babel loaded
 There is no babel loaded
 There is no babel loaded
 There is no babel loaded
+There is no babel loaded
+There is no babel loaded
+There is no babel loaded
+There is no babel loaded
+There is no babel loaded
+There is no babel loaded
+There is no babel loaded
+There is no babel loaded
+There is no babel loaded
 [1000D[0K[|] [1 done /0 queued / 0 running / 1 errors / 0% coverage ] ***
-[+] {"_bound":0} took 1.401s
-[!] TypeError: this._models.find is not a function
+[+] {"_bound":0} took 1.587s
+[!] TypeError: seen.includes is not a function
 [!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"_bound":0}'
 [!] Stats
-[+] General Function Call: 4
+[+] General Function Call: 19
+[+] Modeled Function Call: {"#call":1}
 [!] Done
 [+] Total Lines Of Code 0
 [+] Total Coverage: NaN%

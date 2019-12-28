@@ -753,10 +753,10 @@ Error
     at Object.pureSymbol (/home/blake/PhD/ExpoSE/lib/S$/src/symbols.js:84:141)
     at callFun (/home/blake/PhD/ExpoSE/Analyser/node_modules/jalangi2/src/js/runtime/analysis.js:196:51)
 TC:undefined!![null,null]
-Executing with base undefined and arguments , results undefined TypeError: Array.prototype.fill called on null or undefined [object global] undefined
+Executing with base undefined and arguments , results undefined TypeError: String.prototype.padEnd called on null or undefined [object global] undefined
 
-TypeError: Array.prototype.fill called on null or undefined
-    at fill (native)
+TypeError: String.prototype.padEnd called on null or undefined
+    at padEnd (native)
     at /home/blake/PhD/ExpoSE/Analyser/bin/Models/Helpers.js:87:16
     at Function.mdl (/home/blake/PhD/ExpoSE/Analyser/bin/Models/Models.js:40:21)
     at callFun (/home/blake/PhD/ExpoSE/Analyser/node_modules/jalangi2/src/js/runtime/analysis.js:196:51)
@@ -767,43 +767,6 @@ TypeError: Array.prototype.fill called on null or undefined
     at invokeFun (/home/blake/PhD/ExpoSE/Analyser/node_modules/jalangi2/src/js/runtime/analysis.js:217:22)
     at /home/blake/PhD/ExpoSE/Analyser/node_modules/jalangi2/src/js/runtime/analysis.js:233:41
 [1000D[0K[|] [1 done /23 queued / 1 running / 1 errors / 0% coverage ] ***[1000D[0K[/] [1 done /22 queued / 2 running / 1 errors / 0% coverage ] ***[1000D[0K[-] [1 done /21 queued / 3 running / 1 errors / 0% coverage ] ***[1000D[0K[\] [1 done /20 queued / 4 running / 1 errors / 0% coverage ] ***[1000D[0K[|] [1 done /19 queued / 5 running / 1 errors / 0% coverage ] ***[1000D[0K[/] [1 done /18 queued / 6 running / 1 errors / 0% coverage ] ***[1000D[0K[-] [1 done /17 queued / 7 running / 1 errors / 0% coverage ] ***[1000D[0K[\] [1 done /16 queued / 8 running / 1 errors / 0% coverage ] ***[1000D[0K[|] [1 done /16 queued / 8 running / 1 errors / 0% coverage ] ***There is no babel loaded
-There is no babel loaded
-There is no babel loaded
-There is no babel loaded
-There is no babel loaded
-There is no babel loaded
-There is no babel loaded
-There is no babel loaded
-There is no babel loaded
-There is no babel loaded
-There is no babel loaded
-There is no babel loaded
-There is no babel loaded
-There is no babel loaded
-There is no babel loaded
-There is no babel loaded
-There is no babel loaded
-There is no babel loaded
-There is no babel loaded
-There is no babel loaded
-There is no babel loaded
-There is no babel loaded
-There is no babel loaded
-There is no babel loaded
-There is no babel loaded
-There is no babel loaded
-There is no babel loaded
-There is no babel loaded
-There is no babel loaded
-There is no babel loaded
-There is no babel loaded
-There is no babel loaded
-There is no babel loaded
-There is no babel loaded
-There is no babel loaded
-There is no babel loaded
-There is no babel loaded
-There is no babel loaded
 There is no babel loaded
 There is no babel loaded
 There is no babel loaded
@@ -6200,6 +6163,9 @@ There is no babel loaded
 There is no babel loaded
 There is no babel loaded
 There is no babel loaded
+There is no babel loaded
+There is no babel loaded
+There is no babel loaded
 [1000D[0K[/] [10 done /7 queued / 8 running / 10 errors / 0% coverage ] ***[1000D[0K[-] [10 done /7 queued / 8 running / 10 errors / 0% coverage ] ***[1000D[0K[\] [11 done /6 queued / 8 running / 11 errors / 0% coverage ] ***[1000D[0K[|] [11 done /6 queued / 8 running / 11 errors / 0% coverage ] ***[1000D[0K[/] [12 done /5 queued / 8 running / 12 errors / 0% coverage ] ***[1000D[0K[-] [12 done /5 queued / 8 running / 12 errors / 0% coverage ] ***[1000D[0K[\] [13 done /4 queued / 8 running / 13 errors / 0% coverage ] ***[1000D[0K[|] [13 done /4 queued / 8 running / 13 errors / 0% coverage ] ***[1000D[0K[/] [14 done /3 queued / 8 running / 14 errors / 0% coverage ] ***[1000D[0K[-] [14 done /3 queued / 8 running / 14 errors / 0% coverage ] ***[1000D[0K[\] [15 done /2 queued / 8 running / 15 errors / 0% coverage ] ***[1000D[0K[|] [15 done /2 queued / 8 running / 15 errors / 0% coverage ] ***[1000D[0K[/] [16 done /1 queued / 8 running / 16 errors / 0% coverage ] ***[1000D[0K[-] [16 done /1 queued / 8 running / 16 errors / 0% coverage ] ***[1000D[0K[\] [17 done /0 queued / 8 running / 17 errors / 0% coverage ] ***[1000D[0K[|] [17 done /0 queued / 8 running / 17 errors / 0% coverage ] ***There is no babel loaded
 There is no babel loaded
 There is no babel loaded
@@ -8529,109 +8495,119 @@ There is no babel loaded
 There is no babel loaded
 There is no babel loaded
 There is no babel loaded
+There is no babel loaded
+There is no babel loaded
+There is no babel loaded
+There is no babel loaded
+There is no babel loaded
+There is no babel loaded
+There is no babel loaded
+There is no babel loaded
+There is no babel loaded
+There is no babel loaded
 
-[+] {"_bound":0,"MathRandom":0.07468654667669106,"Argument_t":"undefined","Argument_2_t":"undefined","Base_t":"undefined"} took 1048.951s
-[!] Diverge Ex: undefined vs TypeError: Array.prototype.fill called on null or undefined [object global] undefined
+[+] {"_bound":0,"MathRandom":0.44861270195984027,"Argument_t":"undefined","Argument_2_t":"undefined","Base_t":"undefined"} took 994.774s
+[!] Diverge Ex: undefined vs TypeError: String.prototype.padEnd called on null or undefined [object global] undefined
 [!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"_bound":0}'
-[+] {"MathRandom":0,"Argument_t":"boolean","Argument_2_t":"","Base_t":"","_bound":3,"_forkID":697,"_testCaseId":93055,"_parentId":0,"_createdFrom":true} took 2400.565s
+[+] {"MathRandom":0,"Argument_t":"object","Argument_2_t":"","Base_t":"","_bound":4,"_forkID":697,"_testCaseId":92110,"_parentId":0,"_createdFrom":true} took 2400.529s
 [!] Exception E: SyntaxError: Unexpected end of JSON input of test data on 
 [!] Exception E: SyntaxError: Unexpected end of JSON input of coverage data on 
 [!] Exit code non-zero
 [!] Error extracting final output - a fatal error must have occured
-[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"boolean","Argument_2_t":"","Base_t":"","_bound":3,"_forkID":697,"_testCaseId":93055,"_parentId":0,"_createdFrom":true}'
-[+] {"MathRandom":0,"Argument_t":"object","Argument_2_t":"","Base_t":"","_bound":4,"_forkID":697,"_testCaseId":870,"_parentId":0,"_createdFrom":true} took 2400.562s
+[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"object","Argument_2_t":"","Base_t":"","_bound":4,"_forkID":697,"_testCaseId":92110,"_parentId":0,"_createdFrom":true}'
+[+] {"MathRandom":0,"Argument_t":"array_number","Argument_2_t":"","Base_t":"","_bound":5,"_forkID":697,"_testCaseId":45199,"_parentId":0,"_createdFrom":true} took 2400.526s
 [!] Exception E: SyntaxError: Unexpected end of JSON input of test data on 
 [!] Exception E: SyntaxError: Unexpected end of JSON input of coverage data on 
 [!] Exit code non-zero
 [!] Error extracting final output - a fatal error must have occured
-[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"object","Argument_2_t":"","Base_t":"","_bound":4,"_forkID":697,"_testCaseId":870,"_parentId":0,"_createdFrom":true}'
-[+] {"MathRandom":0,"Argument_t":"array_string","Argument_2_t":"","Base_t":"","_bound":6,"_forkID":697,"_testCaseId":70520,"_parentId":0,"_createdFrom":true} took 2400.573s
+[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"array_number","Argument_2_t":"","Base_t":"","_bound":5,"_forkID":697,"_testCaseId":45199,"_parentId":0,"_createdFrom":true}'
+[+] {"MathRandom":0,"Argument_t":"array_string","Argument_2_t":"","Base_t":"","_bound":6,"_forkID":697,"_testCaseId":85604,"_parentId":0,"_createdFrom":true} took 2400.524s
 [!] Exception E: SyntaxError: Unexpected end of JSON input of test data on 
 [!] Exception E: SyntaxError: Unexpected end of JSON input of coverage data on 
 [!] Exit code non-zero
 [!] Error extracting final output - a fatal error must have occured
-[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"array_string","Argument_2_t":"","Base_t":"","_bound":6,"_forkID":697,"_testCaseId":70520,"_parentId":0,"_createdFrom":true}'
-[+] {"MathRandom":0,"Argument_t":"array_bool","Argument_2_t":"","Base_t":"","_bound":7,"_forkID":697,"_testCaseId":84246,"_parentId":0,"_createdFrom":true} took 2400.57s
+[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"array_string","Argument_2_t":"","Base_t":"","_bound":6,"_forkID":697,"_testCaseId":85604,"_parentId":0,"_createdFrom":true}'
+[+] {"MathRandom":0,"Argument_t":"array_bool","Argument_2_t":"","Base_t":"","_bound":7,"_forkID":697,"_testCaseId":89642,"_parentId":0,"_createdFrom":true} took 2400.522s
 [!] Exception E: SyntaxError: Unexpected end of JSON input of test data on 
 [!] Exception E: SyntaxError: Unexpected end of JSON input of coverage data on 
 [!] Exit code non-zero
 [!] Error extracting final output - a fatal error must have occured
-[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"array_bool","Argument_2_t":"","Base_t":"","_bound":7,"_forkID":697,"_testCaseId":84246,"_parentId":0,"_createdFrom":true}'
-[+] {"MathRandom":0,"Argument_t":"null","Argument_2_t":"","Base_t":"","_bound":8,"_forkID":697,"_testCaseId":83387,"_parentId":0,"_createdFrom":true} took 2400.568s
+[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"array_bool","Argument_2_t":"","Base_t":"","_bound":7,"_forkID":697,"_testCaseId":89642,"_parentId":0,"_createdFrom":true}'
+[+] {"MathRandom":0,"Argument_t":"string","Argument_2_t":"","Base_t":"","_bound":1,"_forkID":697,"_testCaseId":21428,"_parentId":0,"_createdFrom":true} took 2400.554s
 [!] Exception E: SyntaxError: Unexpected end of JSON input of test data on 
 [!] Exception E: SyntaxError: Unexpected end of JSON input of coverage data on 
 [!] Exit code non-zero
 [!] Error extracting final output - a fatal error must have occured
-[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"null","Argument_2_t":"","Base_t":"","_bound":8,"_forkID":697,"_testCaseId":83387,"_parentId":0,"_createdFrom":true}'
-[+] {"MathRandom":0,"Argument_t":"string","Argument_2_t":"","Base_t":"","_bound":1,"_forkID":697,"_testCaseId":64670,"_parentId":0,"_createdFrom":true} took 2400.584s
+[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"string","Argument_2_t":"","Base_t":"","_bound":1,"_forkID":697,"_testCaseId":21428,"_parentId":0,"_createdFrom":true}'
+[+] {"MathRandom":0,"Argument_t":"number","Argument_2_t":"","Base_t":"","_bound":2,"_forkID":697,"_testCaseId":76712,"_parentId":0,"_createdFrom":true} took 2400.556s
 [!] Exception E: SyntaxError: Unexpected end of JSON input of test data on 
 [!] Exception E: SyntaxError: Unexpected end of JSON input of coverage data on 
 [!] Exit code non-zero
 [!] Error extracting final output - a fatal error must have occured
-[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"string","Argument_2_t":"","Base_t":"","_bound":1,"_forkID":697,"_testCaseId":64670,"_parentId":0,"_createdFrom":true}'
-[+] {"MathRandom":0,"Argument_t":"number","Argument_2_t":"","Base_t":"","_bound":2,"_forkID":697,"_testCaseId":47502,"_parentId":0,"_createdFrom":true} took 2400.583s
+[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"number","Argument_2_t":"","Base_t":"","_bound":2,"_forkID":697,"_testCaseId":76712,"_parentId":0,"_createdFrom":true}'
+[+] {"MathRandom":0,"Argument_t":"boolean","Argument_2_t":"","Base_t":"","_bound":3,"_forkID":697,"_testCaseId":21573,"_parentId":0,"_createdFrom":true} took 2400.567s
 [!] Exception E: SyntaxError: Unexpected end of JSON input of test data on 
 [!] Exception E: SyntaxError: Unexpected end of JSON input of coverage data on 
 [!] Exit code non-zero
 [!] Error extracting final output - a fatal error must have occured
-[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"number","Argument_2_t":"","Base_t":"","_bound":2,"_forkID":697,"_testCaseId":47502,"_parentId":0,"_createdFrom":true}'
-[+] {"MathRandom":0,"Argument_t":"array_number","Argument_2_t":"","Base_t":"","_bound":5,"_forkID":697,"_testCaseId":96982,"_parentId":0,"_createdFrom":true} took 2400.599s
+[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"boolean","Argument_2_t":"","Base_t":"","_bound":3,"_forkID":697,"_testCaseId":21573,"_parentId":0,"_createdFrom":true}'
+[+] {"MathRandom":0,"Argument_t":"null","Argument_2_t":"","Base_t":"","_bound":8,"_forkID":697,"_testCaseId":44030,"_parentId":0,"_createdFrom":true} took 2400.566s
 [!] Exception E: SyntaxError: Unexpected end of JSON input of test data on 
 [!] Exception E: SyntaxError: Unexpected end of JSON input of coverage data on 
 [!] Exit code non-zero
 [!] Error extracting final output - a fatal error must have occured
-[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"array_number","Argument_2_t":"","Base_t":"","_bound":5,"_forkID":697,"_testCaseId":96982,"_parentId":0,"_createdFrom":true}'
-[+] {"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"string","Base_t":"","_bound":9,"_forkID":697,"_testCaseId":69482,"_parentId":0,"_createdFrom":true} took 2400.64s
+[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"null","Argument_2_t":"","Base_t":"","_bound":8,"_forkID":697,"_testCaseId":44030,"_parentId":0,"_createdFrom":true}'
+[+] {"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"array_string","Base_t":"","_bound":14,"_forkID":697,"_testCaseId":95934,"_parentId":0,"_createdFrom":true} took 2400.438s
 [!] Exception E: SyntaxError: Unexpected end of JSON input of test data on 
 [!] Exception E: SyntaxError: Unexpected end of JSON input of coverage data on 
 [!] Exit code non-zero
 [!] Error extracting final output - a fatal error must have occured
-[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"string","Base_t":"","_bound":9,"_forkID":697,"_testCaseId":69482,"_parentId":0,"_createdFrom":true}'
-[+] {"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"number","Base_t":"","_bound":10,"_forkID":697,"_testCaseId":937,"_parentId":0,"_createdFrom":true} took 2400.636s
-[!] Exception E: SyntaxError: Unexpected end of JSON input of test data on 
-[!] Exception E: SyntaxError: Unexpected end of JSON input of coverage data on 
-[!] Exit code non-zero
-[!] Error extracting final output - a fatal error must have occured
-[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"number","Base_t":"","_bound":10,"_forkID":697,"_testCaseId":937,"_parentId":0,"_createdFrom":true}'
-[+] {"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"boolean","Base_t":"","_bound":11,"_forkID":697,"_testCaseId":91795,"_parentId":0,"_createdFrom":true} took 2400.633s
-[!] Exception E: SyntaxError: Unexpected end of JSON input of test data on 
-[!] Exception E: SyntaxError: Unexpected end of JSON input of coverage data on 
-[!] Exit code non-zero
-[!] Error extracting final output - a fatal error must have occured
-[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"boolean","Base_t":"","_bound":11,"_forkID":697,"_testCaseId":91795,"_parentId":0,"_createdFrom":true}'
-[+] {"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"array_number","Base_t":"","_bound":13,"_forkID":697,"_testCaseId":554,"_parentId":0,"_createdFrom":true} took 2400.627s
-[!] Exception E: SyntaxError: Unexpected end of JSON input of test data on 
-[!] Exception E: SyntaxError: Unexpected end of JSON input of coverage data on 
-[!] Exit code non-zero
-[!] Error extracting final output - a fatal error must have occured
-[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"array_number","Base_t":"","_bound":13,"_forkID":697,"_testCaseId":554,"_parentId":0,"_createdFrom":true}'
-[+] {"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"array_string","Base_t":"","_bound":14,"_forkID":697,"_testCaseId":60784,"_parentId":0,"_createdFrom":true} took 2400.624s
-[!] Exception E: SyntaxError: Unexpected end of JSON input of test data on 
-[!] Exception E: SyntaxError: Unexpected end of JSON input of coverage data on 
-[!] Exit code non-zero
-[!] Error extracting final output - a fatal error must have occured
-[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"array_string","Base_t":"","_bound":14,"_forkID":697,"_testCaseId":60784,"_parentId":0,"_createdFrom":true}'
-[+] {"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"array_bool","Base_t":"","_bound":15,"_forkID":697,"_testCaseId":65071,"_parentId":0,"_createdFrom":true} took 2400.62s
-[!] Exception E: SyntaxError: Unexpected end of JSON input of test data on 
-[!] Exception E: SyntaxError: Unexpected end of JSON input of coverage data on 
-[!] Exit code non-zero
-[!] Error extracting final output - a fatal error must have occured
-[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"array_bool","Base_t":"","_bound":15,"_forkID":697,"_testCaseId":65071,"_parentId":0,"_createdFrom":true}'
-[+] {"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"object","Base_t":"","_bound":12,"_forkID":697,"_testCaseId":48209,"_parentId":0,"_createdFrom":true} took 2400.631s
+[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"array_string","Base_t":"","_bound":14,"_forkID":697,"_testCaseId":95934,"_parentId":0,"_createdFrom":true}'
+[+] {"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"array_number","Base_t":"","_bound":13,"_forkID":697,"_testCaseId":95009,"_parentId":0,"_createdFrom":true} took 2400.441s
 [!] Exception E: SyntaxError: Unexpected end of JSON input of coverage data on 
 [!] Exception E: SyntaxError: Unexpected end of JSON input of test data on 
 [!] Exit code non-zero
 [!] Error extracting final output - a fatal error must have occured
-[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"object","Base_t":"","_bound":12,"_forkID":697,"_testCaseId":48209,"_parentId":0,"_createdFrom":true}'
-[+] {"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"null","Base_t":"","_bound":16,"_forkID":697,"_testCaseId":63633,"_parentId":0,"_createdFrom":true} took 2400.644s
+[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"array_number","Base_t":"","_bound":13,"_forkID":697,"_testCaseId":95009,"_parentId":0,"_createdFrom":true}'
+[+] {"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"object","Base_t":"","_bound":12,"_forkID":697,"_testCaseId":68801,"_parentId":0,"_createdFrom":true} took 2400.453s
 [!] Exception E: SyntaxError: Unexpected end of JSON input of test data on 
 [!] Exception E: SyntaxError: Unexpected end of JSON input of coverage data on 
 [!] Exit code non-zero
 [!] Error extracting final output - a fatal error must have occured
-[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"null","Base_t":"","_bound":16,"_forkID":697,"_testCaseId":63633,"_parentId":0,"_createdFrom":true}'
+[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"object","Base_t":"","_bound":12,"_forkID":697,"_testCaseId":68801,"_parentId":0,"_createdFrom":true}'
+[+] {"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"string","Base_t":"","_bound":9,"_forkID":697,"_testCaseId":80704,"_parentId":0,"_createdFrom":true} took 2400.489s
+[!] Exception E: SyntaxError: Unexpected end of JSON input of test data on 
+[!] Exception E: SyntaxError: Unexpected end of JSON input of coverage data on 
+[!] Exit code non-zero
+[!] Error extracting final output - a fatal error must have occured
+[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"string","Base_t":"","_bound":9,"_forkID":697,"_testCaseId":80704,"_parentId":0,"_createdFrom":true}'
+[+] {"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"number","Base_t":"","_bound":10,"_forkID":697,"_testCaseId":79289,"_parentId":0,"_createdFrom":true} took 2400.484s
+[!] Exception E: SyntaxError: Unexpected end of JSON input of test data on 
+[!] Exception E: SyntaxError: Unexpected end of JSON input of coverage data on 
+[!] Exit code non-zero
+[!] Error extracting final output - a fatal error must have occured
+[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"number","Base_t":"","_bound":10,"_forkID":697,"_testCaseId":79289,"_parentId":0,"_createdFrom":true}'
+[+] {"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"boolean","Base_t":"","_bound":11,"_forkID":697,"_testCaseId":76364,"_parentId":0,"_createdFrom":true} took 2400.486s
+[!] Exception E: SyntaxError: Unexpected end of JSON input of coverage data on 
+[!] Exception E: SyntaxError: Unexpected end of JSON input of test data on 
+[!] Exit code non-zero
+[!] Error extracting final output - a fatal error must have occured
+[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"boolean","Base_t":"","_bound":11,"_forkID":697,"_testCaseId":76364,"_parentId":0,"_createdFrom":true}'
+[+] {"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"array_bool","Base_t":"","_bound":15,"_forkID":697,"_testCaseId":43021,"_parentId":0,"_createdFrom":true} took 2400.465s
+[!] Exception E: SyntaxError: Unexpected end of JSON input of coverage data on 
+[!] Exception E: SyntaxError: Unexpected end of JSON input of test data on 
+[!] Exit code non-zero
+[!] Error extracting final output - a fatal error must have occured
+[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"array_bool","Base_t":"","_bound":15,"_forkID":697,"_testCaseId":43021,"_parentId":0,"_createdFrom":true}'
+[+] {"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"null","Base_t":"","_bound":16,"_forkID":697,"_testCaseId":53565,"_parentId":0,"_createdFrom":true} took 2400.462s
+[!] Exception E: SyntaxError: Unexpected end of JSON input of test data on 
+[!] Exception E: SyntaxError: Unexpected end of JSON input of coverage data on 
+[!] Exit code non-zero
+[!] Error extracting final output - a fatal error must have occured
+[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"null","Base_t":"","_bound":16,"_forkID":697,"_testCaseId":53565,"_parentId":0,"_createdFrom":true}'
 [!] Stats
-[+] General Function Call: 545372
-[+] Modeled Function Call: {"#call":812115,"#Object":5,"#push":3,"#test":3,"#random":2,"#String":272,"#split":17,"#join":117,"#concat":3,"#replace":78,"#toLowerCase":275,"#floor":2,"#forEach":1,"#assign":5,"#slice":5,"#filter":1,"#indexOf":3,"#map":1,"#keys":1,"#includes":2,"#exec":1,"#match":1,"#[Symbol.match]":1,"#[Symbol.replace]":1,"#search":1,"#[Symbol.search]":1,"#trim":2,"#undefined":2,"#bound consoleCall":5,"#apply":2}
+[+] General Function Call: 545370
+[+] Modeled Function Call: {"#call":812115,"#Object":4,"#push":3,"#test":3,"#random":2,"#String":273,"#split":17,"#join":117,"#concat":3,"#replace":78,"#toLowerCase":275,"#floor":2,"#forEach":1,"#assign":5,"#slice":5,"#filter":1,"#indexOf":3,"#map":1,"#keys":1,"#includes":2,"#exec":1,"#match":1,"#[Symbol.match]":1,"#[Symbol.replace]":1,"#search":1,"#[Symbol.search]":1,"#trim":2,"#undefined":2,"#bound consoleCall":5,"#apply":2}
 [+] Symbolic Values: 5
 [+] Symbolic Primitives: 5
 [+] Wrapped Constants: 30
@@ -8648,156 +8624,156 @@ There is no babel loaded
 [+] EXPOSE_PRINT_COVERAGE=1 for line by line breakdown
 [+] ExpoSE Finished. 17 paths, 17 errors
 [1000D[0K[/] [18 done /0 queued / 7 running / 18 errors / 0% coverage ] ***[1000D[0K[-] [19 done /0 queued / 6 running / 19 errors / 0% coverage ] ***[1000D[0K[\] [20 done /0 queued / 5 running / 20 errors / 0% coverage ] ***[1000D[0K[|] [21 done /0 queued / 4 running / 21 errors / 0% coverage ] ***[1000D[0K[/] [22 done /0 queued / 3 running / 22 errors / 0% coverage ] ***[1000D[0K[-] [23 done /0 queued / 2 running / 23 errors / 0% coverage ] ***[1000D[0K[\] [24 done /0 queued / 1 running / 24 errors / 0% coverage ] ***[1000D[0K[|] [25 done /0 queued / 0 running / 25 errors / 0% coverage ] ***
-[+] {"_bound":0,"MathRandom":0.07468654667669106,"Argument_t":"undefined","Argument_2_t":"undefined","Base_t":"undefined"} took 1048.951s
-[!] Diverge Ex: undefined vs TypeError: Array.prototype.fill called on null or undefined [object global] undefined
+[+] {"_bound":0,"MathRandom":0.44861270195984027,"Argument_t":"undefined","Argument_2_t":"undefined","Base_t":"undefined"} took 994.774s
+[!] Diverge Ex: undefined vs TypeError: String.prototype.padEnd called on null or undefined [object global] undefined
 [!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"_bound":0}'
-[+] {"MathRandom":0,"Argument_t":"boolean","Argument_2_t":"","Base_t":"","_bound":3,"_forkID":697,"_testCaseId":93055,"_parentId":0,"_createdFrom":true} took 2400.565s
+[+] {"MathRandom":0,"Argument_t":"object","Argument_2_t":"","Base_t":"","_bound":4,"_forkID":697,"_testCaseId":92110,"_parentId":0,"_createdFrom":true} took 2400.529s
 [!] Exception E: SyntaxError: Unexpected end of JSON input of test data on 
 [!] Exception E: SyntaxError: Unexpected end of JSON input of coverage data on 
 [!] Exit code non-zero
 [!] Error extracting final output - a fatal error must have occured
-[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"boolean","Argument_2_t":"","Base_t":"","_bound":3,"_forkID":697,"_testCaseId":93055,"_parentId":0,"_createdFrom":true}'
-[+] {"MathRandom":0,"Argument_t":"object","Argument_2_t":"","Base_t":"","_bound":4,"_forkID":697,"_testCaseId":870,"_parentId":0,"_createdFrom":true} took 2400.562s
+[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"object","Argument_2_t":"","Base_t":"","_bound":4,"_forkID":697,"_testCaseId":92110,"_parentId":0,"_createdFrom":true}'
+[+] {"MathRandom":0,"Argument_t":"array_number","Argument_2_t":"","Base_t":"","_bound":5,"_forkID":697,"_testCaseId":45199,"_parentId":0,"_createdFrom":true} took 2400.526s
 [!] Exception E: SyntaxError: Unexpected end of JSON input of test data on 
 [!] Exception E: SyntaxError: Unexpected end of JSON input of coverage data on 
 [!] Exit code non-zero
 [!] Error extracting final output - a fatal error must have occured
-[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"object","Argument_2_t":"","Base_t":"","_bound":4,"_forkID":697,"_testCaseId":870,"_parentId":0,"_createdFrom":true}'
-[+] {"MathRandom":0,"Argument_t":"array_string","Argument_2_t":"","Base_t":"","_bound":6,"_forkID":697,"_testCaseId":70520,"_parentId":0,"_createdFrom":true} took 2400.573s
+[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"array_number","Argument_2_t":"","Base_t":"","_bound":5,"_forkID":697,"_testCaseId":45199,"_parentId":0,"_createdFrom":true}'
+[+] {"MathRandom":0,"Argument_t":"array_string","Argument_2_t":"","Base_t":"","_bound":6,"_forkID":697,"_testCaseId":85604,"_parentId":0,"_createdFrom":true} took 2400.524s
 [!] Exception E: SyntaxError: Unexpected end of JSON input of test data on 
 [!] Exception E: SyntaxError: Unexpected end of JSON input of coverage data on 
 [!] Exit code non-zero
 [!] Error extracting final output - a fatal error must have occured
-[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"array_string","Argument_2_t":"","Base_t":"","_bound":6,"_forkID":697,"_testCaseId":70520,"_parentId":0,"_createdFrom":true}'
-[+] {"MathRandom":0,"Argument_t":"array_bool","Argument_2_t":"","Base_t":"","_bound":7,"_forkID":697,"_testCaseId":84246,"_parentId":0,"_createdFrom":true} took 2400.57s
+[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"array_string","Argument_2_t":"","Base_t":"","_bound":6,"_forkID":697,"_testCaseId":85604,"_parentId":0,"_createdFrom":true}'
+[+] {"MathRandom":0,"Argument_t":"array_bool","Argument_2_t":"","Base_t":"","_bound":7,"_forkID":697,"_testCaseId":89642,"_parentId":0,"_createdFrom":true} took 2400.522s
 [!] Exception E: SyntaxError: Unexpected end of JSON input of test data on 
 [!] Exception E: SyntaxError: Unexpected end of JSON input of coverage data on 
 [!] Exit code non-zero
 [!] Error extracting final output - a fatal error must have occured
-[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"array_bool","Argument_2_t":"","Base_t":"","_bound":7,"_forkID":697,"_testCaseId":84246,"_parentId":0,"_createdFrom":true}'
-[+] {"MathRandom":0,"Argument_t":"null","Argument_2_t":"","Base_t":"","_bound":8,"_forkID":697,"_testCaseId":83387,"_parentId":0,"_createdFrom":true} took 2400.568s
+[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"array_bool","Argument_2_t":"","Base_t":"","_bound":7,"_forkID":697,"_testCaseId":89642,"_parentId":0,"_createdFrom":true}'
+[+] {"MathRandom":0,"Argument_t":"string","Argument_2_t":"","Base_t":"","_bound":1,"_forkID":697,"_testCaseId":21428,"_parentId":0,"_createdFrom":true} took 2400.554s
 [!] Exception E: SyntaxError: Unexpected end of JSON input of test data on 
 [!] Exception E: SyntaxError: Unexpected end of JSON input of coverage data on 
 [!] Exit code non-zero
 [!] Error extracting final output - a fatal error must have occured
-[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"null","Argument_2_t":"","Base_t":"","_bound":8,"_forkID":697,"_testCaseId":83387,"_parentId":0,"_createdFrom":true}'
-[+] {"MathRandom":0,"Argument_t":"string","Argument_2_t":"","Base_t":"","_bound":1,"_forkID":697,"_testCaseId":64670,"_parentId":0,"_createdFrom":true} took 2400.584s
+[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"string","Argument_2_t":"","Base_t":"","_bound":1,"_forkID":697,"_testCaseId":21428,"_parentId":0,"_createdFrom":true}'
+[+] {"MathRandom":0,"Argument_t":"number","Argument_2_t":"","Base_t":"","_bound":2,"_forkID":697,"_testCaseId":76712,"_parentId":0,"_createdFrom":true} took 2400.556s
 [!] Exception E: SyntaxError: Unexpected end of JSON input of test data on 
 [!] Exception E: SyntaxError: Unexpected end of JSON input of coverage data on 
 [!] Exit code non-zero
 [!] Error extracting final output - a fatal error must have occured
-[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"string","Argument_2_t":"","Base_t":"","_bound":1,"_forkID":697,"_testCaseId":64670,"_parentId":0,"_createdFrom":true}'
-[+] {"MathRandom":0,"Argument_t":"number","Argument_2_t":"","Base_t":"","_bound":2,"_forkID":697,"_testCaseId":47502,"_parentId":0,"_createdFrom":true} took 2400.583s
+[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"number","Argument_2_t":"","Base_t":"","_bound":2,"_forkID":697,"_testCaseId":76712,"_parentId":0,"_createdFrom":true}'
+[+] {"MathRandom":0,"Argument_t":"boolean","Argument_2_t":"","Base_t":"","_bound":3,"_forkID":697,"_testCaseId":21573,"_parentId":0,"_createdFrom":true} took 2400.567s
 [!] Exception E: SyntaxError: Unexpected end of JSON input of test data on 
 [!] Exception E: SyntaxError: Unexpected end of JSON input of coverage data on 
 [!] Exit code non-zero
 [!] Error extracting final output - a fatal error must have occured
-[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"number","Argument_2_t":"","Base_t":"","_bound":2,"_forkID":697,"_testCaseId":47502,"_parentId":0,"_createdFrom":true}'
-[+] {"MathRandom":0,"Argument_t":"array_number","Argument_2_t":"","Base_t":"","_bound":5,"_forkID":697,"_testCaseId":96982,"_parentId":0,"_createdFrom":true} took 2400.599s
+[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"boolean","Argument_2_t":"","Base_t":"","_bound":3,"_forkID":697,"_testCaseId":21573,"_parentId":0,"_createdFrom":true}'
+[+] {"MathRandom":0,"Argument_t":"null","Argument_2_t":"","Base_t":"","_bound":8,"_forkID":697,"_testCaseId":44030,"_parentId":0,"_createdFrom":true} took 2400.566s
 [!] Exception E: SyntaxError: Unexpected end of JSON input of test data on 
 [!] Exception E: SyntaxError: Unexpected end of JSON input of coverage data on 
 [!] Exit code non-zero
 [!] Error extracting final output - a fatal error must have occured
-[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"array_number","Argument_2_t":"","Base_t":"","_bound":5,"_forkID":697,"_testCaseId":96982,"_parentId":0,"_createdFrom":true}'
-[+] {"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"string","Base_t":"","_bound":9,"_forkID":697,"_testCaseId":69482,"_parentId":0,"_createdFrom":true} took 2400.64s
+[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"null","Argument_2_t":"","Base_t":"","_bound":8,"_forkID":697,"_testCaseId":44030,"_parentId":0,"_createdFrom":true}'
+[+] {"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"array_string","Base_t":"","_bound":14,"_forkID":697,"_testCaseId":95934,"_parentId":0,"_createdFrom":true} took 2400.438s
 [!] Exception E: SyntaxError: Unexpected end of JSON input of test data on 
 [!] Exception E: SyntaxError: Unexpected end of JSON input of coverage data on 
 [!] Exit code non-zero
 [!] Error extracting final output - a fatal error must have occured
-[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"string","Base_t":"","_bound":9,"_forkID":697,"_testCaseId":69482,"_parentId":0,"_createdFrom":true}'
-[+] {"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"number","Base_t":"","_bound":10,"_forkID":697,"_testCaseId":937,"_parentId":0,"_createdFrom":true} took 2400.636s
-[!] Exception E: SyntaxError: Unexpected end of JSON input of test data on 
-[!] Exception E: SyntaxError: Unexpected end of JSON input of coverage data on 
-[!] Exit code non-zero
-[!] Error extracting final output - a fatal error must have occured
-[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"number","Base_t":"","_bound":10,"_forkID":697,"_testCaseId":937,"_parentId":0,"_createdFrom":true}'
-[+] {"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"boolean","Base_t":"","_bound":11,"_forkID":697,"_testCaseId":91795,"_parentId":0,"_createdFrom":true} took 2400.633s
-[!] Exception E: SyntaxError: Unexpected end of JSON input of test data on 
-[!] Exception E: SyntaxError: Unexpected end of JSON input of coverage data on 
-[!] Exit code non-zero
-[!] Error extracting final output - a fatal error must have occured
-[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"boolean","Base_t":"","_bound":11,"_forkID":697,"_testCaseId":91795,"_parentId":0,"_createdFrom":true}'
-[+] {"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"array_number","Base_t":"","_bound":13,"_forkID":697,"_testCaseId":554,"_parentId":0,"_createdFrom":true} took 2400.627s
-[!] Exception E: SyntaxError: Unexpected end of JSON input of test data on 
-[!] Exception E: SyntaxError: Unexpected end of JSON input of coverage data on 
-[!] Exit code non-zero
-[!] Error extracting final output - a fatal error must have occured
-[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"array_number","Base_t":"","_bound":13,"_forkID":697,"_testCaseId":554,"_parentId":0,"_createdFrom":true}'
-[+] {"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"array_string","Base_t":"","_bound":14,"_forkID":697,"_testCaseId":60784,"_parentId":0,"_createdFrom":true} took 2400.624s
-[!] Exception E: SyntaxError: Unexpected end of JSON input of test data on 
-[!] Exception E: SyntaxError: Unexpected end of JSON input of coverage data on 
-[!] Exit code non-zero
-[!] Error extracting final output - a fatal error must have occured
-[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"array_string","Base_t":"","_bound":14,"_forkID":697,"_testCaseId":60784,"_parentId":0,"_createdFrom":true}'
-[+] {"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"array_bool","Base_t":"","_bound":15,"_forkID":697,"_testCaseId":65071,"_parentId":0,"_createdFrom":true} took 2400.62s
-[!] Exception E: SyntaxError: Unexpected end of JSON input of test data on 
-[!] Exception E: SyntaxError: Unexpected end of JSON input of coverage data on 
-[!] Exit code non-zero
-[!] Error extracting final output - a fatal error must have occured
-[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"array_bool","Base_t":"","_bound":15,"_forkID":697,"_testCaseId":65071,"_parentId":0,"_createdFrom":true}'
-[+] {"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"object","Base_t":"","_bound":12,"_forkID":697,"_testCaseId":48209,"_parentId":0,"_createdFrom":true} took 2400.631s
+[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"array_string","Base_t":"","_bound":14,"_forkID":697,"_testCaseId":95934,"_parentId":0,"_createdFrom":true}'
+[+] {"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"array_number","Base_t":"","_bound":13,"_forkID":697,"_testCaseId":95009,"_parentId":0,"_createdFrom":true} took 2400.441s
 [!] Exception E: SyntaxError: Unexpected end of JSON input of coverage data on 
 [!] Exception E: SyntaxError: Unexpected end of JSON input of test data on 
 [!] Exit code non-zero
 [!] Error extracting final output - a fatal error must have occured
-[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"object","Base_t":"","_bound":12,"_forkID":697,"_testCaseId":48209,"_parentId":0,"_createdFrom":true}'
-[+] {"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"null","Base_t":"","_bound":16,"_forkID":697,"_testCaseId":63633,"_parentId":0,"_createdFrom":true} took 2400.644s
+[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"array_number","Base_t":"","_bound":13,"_forkID":697,"_testCaseId":95009,"_parentId":0,"_createdFrom":true}'
+[+] {"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"object","Base_t":"","_bound":12,"_forkID":697,"_testCaseId":68801,"_parentId":0,"_createdFrom":true} took 2400.453s
 [!] Exception E: SyntaxError: Unexpected end of JSON input of test data on 
 [!] Exception E: SyntaxError: Unexpected end of JSON input of coverage data on 
 [!] Exit code non-zero
 [!] Error extracting final output - a fatal error must have occured
-[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"null","Base_t":"","_bound":16,"_forkID":697,"_testCaseId":63633,"_parentId":0,"_createdFrom":true}'
-[+] {"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"!1!","Base_t":"boolean","_bound":19,"_forkID":697,"_testCaseId":12962,"_parentId":0,"_createdFrom":true} took 1350.307s
+[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"object","Base_t":"","_bound":12,"_forkID":697,"_testCaseId":68801,"_parentId":0,"_createdFrom":true}'
+[+] {"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"string","Base_t":"","_bound":9,"_forkID":697,"_testCaseId":80704,"_parentId":0,"_createdFrom":true} took 2400.489s
 [!] Exception E: SyntaxError: Unexpected end of JSON input of test data on 
 [!] Exception E: SyntaxError: Unexpected end of JSON input of coverage data on 
 [!] Exit code non-zero
 [!] Error extracting final output - a fatal error must have occured
-[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"!1!","Base_t":"boolean","_bound":19,"_forkID":697,"_testCaseId":12962,"_parentId":0,"_createdFrom":true}'
-[+] {"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"!1!","Base_t":"object","_bound":20,"_forkID":697,"_testCaseId":2435,"_parentId":0,"_createdFrom":true} took 1350.303s
+[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"string","Base_t":"","_bound":9,"_forkID":697,"_testCaseId":80704,"_parentId":0,"_createdFrom":true}'
+[+] {"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"number","Base_t":"","_bound":10,"_forkID":697,"_testCaseId":79289,"_parentId":0,"_createdFrom":true} took 2400.484s
 [!] Exception E: SyntaxError: Unexpected end of JSON input of test data on 
 [!] Exception E: SyntaxError: Unexpected end of JSON input of coverage data on 
 [!] Exit code non-zero
 [!] Error extracting final output - a fatal error must have occured
-[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"!1!","Base_t":"object","_bound":20,"_forkID":697,"_testCaseId":2435,"_parentId":0,"_createdFrom":true}'
-[+] {"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"!1!","Base_t":"array_number","_bound":21,"_forkID":697,"_testCaseId":9561,"_parentId":0,"_createdFrom":true} took 1350.301s
+[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"number","Base_t":"","_bound":10,"_forkID":697,"_testCaseId":79289,"_parentId":0,"_createdFrom":true}'
+[+] {"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"boolean","Base_t":"","_bound":11,"_forkID":697,"_testCaseId":76364,"_parentId":0,"_createdFrom":true} took 2400.486s
+[!] Exception E: SyntaxError: Unexpected end of JSON input of coverage data on 
+[!] Exception E: SyntaxError: Unexpected end of JSON input of test data on 
+[!] Exit code non-zero
+[!] Error extracting final output - a fatal error must have occured
+[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"boolean","Base_t":"","_bound":11,"_forkID":697,"_testCaseId":76364,"_parentId":0,"_createdFrom":true}'
+[+] {"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"array_bool","Base_t":"","_bound":15,"_forkID":697,"_testCaseId":43021,"_parentId":0,"_createdFrom":true} took 2400.465s
+[!] Exception E: SyntaxError: Unexpected end of JSON input of coverage data on 
+[!] Exception E: SyntaxError: Unexpected end of JSON input of test data on 
+[!] Exit code non-zero
+[!] Error extracting final output - a fatal error must have occured
+[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"array_bool","Base_t":"","_bound":15,"_forkID":697,"_testCaseId":43021,"_parentId":0,"_createdFrom":true}'
+[+] {"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"null","Base_t":"","_bound":16,"_forkID":697,"_testCaseId":53565,"_parentId":0,"_createdFrom":true} took 2400.462s
 [!] Exception E: SyntaxError: Unexpected end of JSON input of test data on 
 [!] Exception E: SyntaxError: Unexpected end of JSON input of coverage data on 
 [!] Exit code non-zero
 [!] Error extracting final output - a fatal error must have occured
-[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"!1!","Base_t":"array_number","_bound":21,"_forkID":697,"_testCaseId":9561,"_parentId":0,"_createdFrom":true}'
-[+] {"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"!1!","Base_t":"string","_bound":17,"_forkID":697,"_testCaseId":33282,"_parentId":0,"_createdFrom":true} took 1350.335s
+[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"null","Base_t":"","_bound":16,"_forkID":697,"_testCaseId":53565,"_parentId":0,"_createdFrom":true}'
+[+] {"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"!1!","Base_t":"boolean","_bound":19,"_forkID":697,"_testCaseId":98133,"_parentId":0,"_createdFrom":true} took 1404.75s
 [!] Exception E: SyntaxError: Unexpected end of JSON input of test data on 
 [!] Exception E: SyntaxError: Unexpected end of JSON input of coverage data on 
 [!] Exit code non-zero
 [!] Error extracting final output - a fatal error must have occured
-[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"!1!","Base_t":"string","_bound":17,"_forkID":697,"_testCaseId":33282,"_parentId":0,"_createdFrom":true}'
-[+] {"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"!1!","Base_t":"number","_bound":18,"_forkID":697,"_testCaseId":49068,"_parentId":0,"_createdFrom":true} took 1350.328s
+[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"!1!","Base_t":"boolean","_bound":19,"_forkID":697,"_testCaseId":98133,"_parentId":0,"_createdFrom":true}'
+[+] {"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"!1!","Base_t":"object","_bound":20,"_forkID":697,"_testCaseId":98138,"_parentId":0,"_createdFrom":true} took 1404.747s
 [!] Exception E: SyntaxError: Unexpected end of JSON input of test data on 
 [!] Exception E: SyntaxError: Unexpected end of JSON input of coverage data on 
 [!] Exit code non-zero
 [!] Error extracting final output - a fatal error must have occured
-[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"!1!","Base_t":"number","_bound":18,"_forkID":697,"_testCaseId":49068,"_parentId":0,"_createdFrom":true}'
-[+] {"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"!1!","Base_t":"null","_bound":24,"_forkID":697,"_testCaseId":47733,"_parentId":0,"_createdFrom":true} took 1350.309s
+[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"!1!","Base_t":"object","_bound":20,"_forkID":697,"_testCaseId":98138,"_parentId":0,"_createdFrom":true}'
+[+] {"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"!1!","Base_t":"array_number","_bound":21,"_forkID":697,"_testCaseId":85715,"_parentId":0,"_createdFrom":true} took 1404.744s
 [!] Exception E: SyntaxError: Unexpected end of JSON input of test data on 
 [!] Exception E: SyntaxError: Unexpected end of JSON input of coverage data on 
 [!] Exit code non-zero
 [!] Error extracting final output - a fatal error must have occured
-[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"!1!","Base_t":"null","_bound":24,"_forkID":697,"_testCaseId":47733,"_parentId":0,"_createdFrom":true}'
-[+] {"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"!1!","Base_t":"array_bool","_bound":23,"_forkID":697,"_testCaseId":31942,"_parentId":0,"_createdFrom":true} took 1350.324s
+[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"!1!","Base_t":"array_number","_bound":21,"_forkID":697,"_testCaseId":85715,"_parentId":0,"_createdFrom":true}'
+[+] {"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"!1!","Base_t":"null","_bound":24,"_forkID":697,"_testCaseId":98509,"_parentId":0,"_createdFrom":true} took 1404.743s
+[!] Exception E: SyntaxError: Unexpected end of JSON input of coverage data on 
+[!] Exception E: SyntaxError: Unexpected end of JSON input of test data on 
+[!] Exit code non-zero
+[!] Error extracting final output - a fatal error must have occured
+[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"!1!","Base_t":"null","_bound":24,"_forkID":697,"_testCaseId":98509,"_parentId":0,"_createdFrom":true}'
+[+] {"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"!1!","Base_t":"string","_bound":17,"_forkID":697,"_testCaseId":20370,"_parentId":0,"_createdFrom":true} took 1404.776s
+[!] Exception E: SyntaxError: Unexpected end of JSON input of coverage data on 
+[!] Exception E: SyntaxError: Unexpected end of JSON input of test data on 
+[!] Exit code non-zero
+[!] Error extracting final output - a fatal error must have occured
+[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"!1!","Base_t":"string","_bound":17,"_forkID":697,"_testCaseId":20370,"_parentId":0,"_createdFrom":true}'
+[+] {"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"!1!","Base_t":"number","_bound":18,"_forkID":697,"_testCaseId":42935,"_parentId":0,"_createdFrom":true} took 1404.776s
 [!] Exception E: SyntaxError: Unexpected end of JSON input of test data on 
 [!] Exception E: SyntaxError: Unexpected end of JSON input of coverage data on 
 [!] Exit code non-zero
 [!] Error extracting final output - a fatal error must have occured
-[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"!1!","Base_t":"array_bool","_bound":23,"_forkID":697,"_testCaseId":31942,"_parentId":0,"_createdFrom":true}'
-[+] {"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"!1!","Base_t":"array_string","_bound":22,"_forkID":697,"_testCaseId":33597,"_parentId":0,"_createdFrom":true} took 1350.329s
+[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"!1!","Base_t":"number","_bound":18,"_forkID":697,"_testCaseId":42935,"_parentId":0,"_createdFrom":true}'
+[+] {"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"!1!","Base_t":"array_string","_bound":22,"_forkID":697,"_testCaseId":13351,"_parentId":0,"_createdFrom":true} took 1404.761s
 [!] Exception E: SyntaxError: Unexpected end of JSON input of test data on 
 [!] Exception E: SyntaxError: Unexpected end of JSON input of coverage data on 
 [!] Exit code non-zero
 [!] Error extracting final output - a fatal error must have occured
-[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"!1!","Base_t":"array_string","_bound":22,"_forkID":697,"_testCaseId":33597,"_parentId":0,"_createdFrom":true}'
+[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"!1!","Base_t":"array_string","_bound":22,"_forkID":697,"_testCaseId":13351,"_parentId":0,"_createdFrom":true}'
+[+] {"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"!1!","Base_t":"array_bool","_bound":23,"_forkID":697,"_testCaseId":90744,"_parentId":0,"_createdFrom":true} took 1404.756s
+[!] Exception E: SyntaxError: Unexpected end of JSON input of test data on 
+[!] Exception E: SyntaxError: Unexpected end of JSON input of coverage data on 
+[!] Exit code non-zero
+[!] Error extracting final output - a fatal error must have occured
+[!] expoSE replay /home/blake/PhD/conformance_test_runner/scanner/generic_harness '{"MathRandom":0,"Argument_t":"!0!","Argument_2_t":"!1!","Base_t":"array_bool","_bound":23,"_forkID":697,"_testCaseId":90744,"_parentId":0,"_createdFrom":true}'
 [!] Stats
-[+] General Function Call: 545372
-[+] Modeled Function Call: {"#call":812115,"#Object":5,"#push":3,"#test":3,"#random":2,"#String":272,"#split":17,"#join":117,"#concat":3,"#replace":78,"#toLowerCase":275,"#floor":2,"#forEach":1,"#assign":5,"#slice":5,"#filter":1,"#indexOf":3,"#map":1,"#keys":1,"#includes":2,"#exec":1,"#match":1,"#[Symbol.match]":1,"#[Symbol.replace]":1,"#search":1,"#[Symbol.search]":1,"#trim":2,"#undefined":2,"#bound consoleCall":5,"#apply":2}
+[+] General Function Call: 545370
+[+] Modeled Function Call: {"#call":812115,"#Object":4,"#push":3,"#test":3,"#random":2,"#String":273,"#split":17,"#join":117,"#concat":3,"#replace":78,"#toLowerCase":275,"#floor":2,"#forEach":1,"#assign":5,"#slice":5,"#filter":1,"#indexOf":3,"#map":1,"#keys":1,"#includes":2,"#exec":1,"#match":1,"#[Symbol.match]":1,"#[Symbol.replace]":1,"#search":1,"#[Symbol.search]":1,"#trim":2,"#undefined":2,"#bound consoleCall":5,"#apply":2}
 [+] Symbolic Values: 5
 [+] Symbolic Primitives: 5
 [+] Wrapped Constants: 30

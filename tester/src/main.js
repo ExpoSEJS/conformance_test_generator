@@ -2,10 +2,16 @@ const fs = require('fs');
 const child_process = require('child_process');
 
 function generateNodeTest(methodName, methodInput, codeToLoadPolyfill) {
-  const template = `delete ${methodName};\n \
-                    ${codeToLoadPolyfill};\n \
+  let template = '';
+
+  if (codeToLoadPolyfill) {
+    template += `delete ${methodName};\n \
+                 ${codeToLoadPolyfill};\n`;
+  }
+
+  template +=       `
                     try {\n \
-                      var result = ${methodName}.apply(${methodInput});
+                      var result = ${methodName}.call(${methodInput});
                       console.log('STD:'+JSON.stringify(result));
                     } catch (e) {\n \
                       console.log('FN THROW ERR:' + e);\n \
@@ -15,7 +21,7 @@ function generateNodeTest(methodName, methodInput, codeToLoadPolyfill) {
 
 function generateFirefoxTest(methodName, methodInput) {
   const template = `<html><head><script>try {\n \
-                      var result = ${methodName}.apply(${methodInput});
+                      var result = ${methodName}.call(${methodInput});
                       window.dump('STD:'+JSON.stringify(result));
                     } catch (e) {\n \
                       window.dump('FN THROW ERR:' + e);\n \
@@ -76,11 +82,12 @@ function writeTest(test, suffix) {
 }
 
 function doTest(methodName, input) {
+  const nativeJs = writeTest(generateNodeTest(methodName, input), 'js');
   const coreJs = writeTest(generateNodeTest(methodName, input, 'require(\'core-js\')'), 'js');
   const mdnPolyfill = writeTest(generateNodeTest(methodName, input, `require('mdn-polyfills/${methodName}');`), 'js');
-  const firefox = writeTest(generateFirefoxTest(methodName, input), 'html');
+//  const firefox = writeTest(generateFirefoxTest(methodName, input), 'html');
 
-  const outputs = [runTest(coreJs, nodeJsRunner), runTest(mdnPolyfill, nodeJsRunner), runTest(coreJs, quickJsRunner), runTest(mdnPolyfill, quickJsRunner), runTest(firefox, firefoxRunner)];
+  const outputs = [runTest(nativeJs, nodeJsRunner), runTest(coreJs, nodeJsRunner), runTest(mdnPolyfill, nodeJsRunner), runTest(nativeJs, quickJsRunner), runTest(coreJs, quickJsRunner), runTest(mdnPolyfill, quickJsRunner)];
   console.log('Test Outputs: ' + JSON.stringify(outputs));
 }
 

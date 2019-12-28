@@ -3,7 +3,7 @@
 rm -rf ./$2/
 mkdir $2
 
-#export EXPOSE_PRINT_PATHS=1
+export EXPOSE_PRINT_PATHS=1
 
 # Arrays
 ./$1 "Array.from" "3" $2
