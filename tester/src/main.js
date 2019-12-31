@@ -47,12 +47,21 @@ function runTest(test, runner) {
 
   if (indexOfResult != -1) {
     const jsonResult = splitDeliminatorReadToEndOfLine(output, indexOfResult);
-    return JSON.parse(jsonResult);
+    return {
+      test: test,
+      result: JSON.parse(jsonResult)
+    };
   } else if (indexOfErr != -1) {
-    return splitDeliminatorReadToEndOfLine(output, indexOfErr);
+    return {
+      test: test,
+      result: undefined,
+      error: splitDeliminatorReadToEndOfLine(output, indexOfErr)
+    };
   } else {
     console.log('Test case failed! with: ' + output);
-    return undefined;
+    return {
+      sys_error: 'Interpreter failed to execute testcase'
+    };
   }
 }
 
@@ -86,19 +95,58 @@ function writeTest(test, suffix) {
   return newTestFilename + '.rewritten.js';
 }
 
+function cmpTc(output, pre, resultList, errorList) {
+
+  function flag(x) {
+    console.log(pre + x + ' ' + JSON.stringify(output));
+  }
+
+  if (output.result !== undefined) {
+    let foundDivergence = resultList.find(x => x !== output.result);
+    resultList.push(output.result);
+  } else if (resultList.length) {
+    flag('threw when other tests have given results');
+  }
+
+  if (output.error !== undefined) {
+    let foundDivergence = errorList.find(x => x != output.error);
+    if (foundDivergence) {
+      flag('different error message from previous error');
+    }
+    errorList.push(output.error);
+  } else if (errors.length) {
+    flag('Testcase disagrees with others, does not throw instead has value ' + output.result);
+  }
+}
+
 function doTest(methodName, input) {
 
   let tests = [writeTest(generateNodeTest(methodName, input), 'js'), writeTest(generateNodeTest(methodName, input, 'require(\'core-js\')'), 'js'), writeTest(generateNodeTest(methodName, input, `require('mdn-polyfills/${methodName}');`), 'js')]; 
-  let outputs = [];
+  let outputs = {};
 
   for (let testCase of tests) {
-    outputs.push(runTest(testCase, nodeJsRunner));
-    outputs.push(runTest(testCase, quickJsRunner));
-    outputs.push(runTest(testCase, spidermonkeyRunner));
+    outputs[testCase] = [];
+    outputs[testCase].push(runTest(testCase, nodeJsRunner));
+    outputs[testCase].push(runTest(testCase, quickJsRunner));
+    outputs[testCase].push(runTest(testCase, spidermonkeyRunner));
     //runTest(testCase, spiderMonkey);
   }
 
-  console.log('Test Outputs: ' + JSON.stringify(outputs));
+  let ores = [];
+  let oerr = [];
+
+  for (testCase in outputs) {
+    let results = [];
+    let errors = [];
+    let thisTestcaseOutputs = outputs[testCase];
+    for (let output of thisTestcaseOutputs) {
+      if (output.sys_error) {
+        console.log(`FATAL: TC Failed with ${JSON.stringify(output)}`);
+      }
+      cmpTc(output, 'SAMEINTERPRETER:', results, errors);
+      cmpTc(output, 'OVERALL:', ores, oerr);
+    }
+  }
 }
 
 const readline = require('readline');
