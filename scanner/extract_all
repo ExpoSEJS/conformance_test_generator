@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+node ./extract_results.js ./results_cjs/* ./results_esp6/* ./results_mdn/*;

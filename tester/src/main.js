@@ -87,22 +87,28 @@ function firefoxRunner(testcase) {
 
 let numberOfWrittenTests = 0;
 
-function writeTest(test, suffix) {
-  const newTestFilename = `dst/${numberOfWrittenTests}.${suffix}`;
+function writeTest(testName, test, suffix) {
+  const newTestFilename = `dst/${testName}_${numberOfWrittenTests}.${suffix}`;
   fs.writeFileSync(newTestFilename, test);
   numberOfWrittenTests += 1;
   child_process.spawnSync('browserify', [newTestFilename, '-o', newTestFilename + '.rewritten.js']);
   return newTestFilename + '.rewritten.js';
 }
 
-function cmpTc(output, pre, resultList, errorList) {
+function cmpTc(output, pre, input, resultList, errorList) {
 
   function flag(x) {
+    output.input = input;
     console.log(pre + x + ' ' + JSON.stringify(output));
   }
 
   if (output.result !== undefined) {
     let foundDivergence = resultList.find(x => x !== output.result);
+
+    if (foundDivergence) {
+      flag('different result from previous ' + foundDivergence);
+    }
+
     resultList.push(output.result);
   } else if (resultList.length) {
     flag('threw when other tests have given results');
@@ -111,7 +117,7 @@ function cmpTc(output, pre, resultList, errorList) {
   if (output.error !== undefined) {
     let foundDivergence = errorList.find(x => x != output.error);
     if (foundDivergence) {
-      flag('different error message from previous error');
+      flag('different error message from previous error ' + foundDivergence);
     }
     errorList.push(output.error);
   } else if (errors.length) {
@@ -121,7 +127,12 @@ function cmpTc(output, pre, resultList, errorList) {
 
 function doTest(methodName, input) {
 
-  let tests = [writeTest(generateNodeTest(methodName, input), 'js'), writeTest(generateNodeTest(methodName, input, 'require(\'core-js\')'), 'js'), writeTest(generateNodeTest(methodName, input, `require('mdn-polyfills/${methodName}');`), 'js')]; 
+  let tests = [
+    writeTest(`native_${methodName}`, generateNodeTest(methodName, input), 'js'),
+    writeTest(`corejs_${methodName}`, generateNodeTest(methodName, input, 'require(\'core-js\')'), 'js'),
+    writeTest(`mdn_${methodName}`, generateNodeTest(methodName, input, `require('mdn-polyfills/${methodName}');`), 'js')
+  ]; 
+  
   let outputs = {};
 
   for (let testCase of tests) {
@@ -129,7 +140,6 @@ function doTest(methodName, input) {
     outputs[testCase].push(runTest(testCase, nodeJsRunner));
     outputs[testCase].push(runTest(testCase, quickJsRunner));
     outputs[testCase].push(runTest(testCase, spidermonkeyRunner));
-    //runTest(testCase, spiderMonkey);
   }
 
   let ores = [];
@@ -141,10 +151,11 @@ function doTest(methodName, input) {
     let thisTestcaseOutputs = outputs[testCase];
     for (let output of thisTestcaseOutputs) {
       if (output.sys_error) {
-        console.log(`FATAL: TC Failed with ${JSON.stringify(output)}`);
+        console.log(`FATAL: TC Failed with ${JSON.stringify(output)} ${JSON.stringify(input)}`);
+        continue;
       }
-      cmpTc(output, 'SAMEINTERPRETER:', results, errors);
-      cmpTc(output, 'OVERALL:', ores, oerr);
+      cmpTc(output, 'SAMEINTERPRETER:', input, results, errors);
+      cmpTc(output, 'OVERALL:', input, ores, oerr);
     }
   }
 }
