@@ -72,7 +72,7 @@ function nodeJsRunner(testcase) {
 
 function quickJsRunner(testcase) {
   console.log(`Launching QJS: ${testcase}`);
-  return child_process.spawnSync('qjs', [testcase]).stdout.toString();
+  return child_process.spawnSync('../../quickjs/qjs', [testcase]).stdout.toString();
 }
 
 function spidermonkeyRunner(testcase) {
