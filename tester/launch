@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 rm -rf dst
 rm -rf outputs
+rm results.sqlite3
 mkdir dst
 mkdir outputs
-node src/main.js
+node --max-old-space-size=8192 src/main.js

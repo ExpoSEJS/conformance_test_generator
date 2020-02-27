@@ -1,5 +1,25 @@
 const fs = require('fs');
 const child_process = require('child_process');
+const { exec, spawn, fork, execFile } = require('promisify-child-process')
+const sqlite = require('sqlite3');
+const db = new sqlite.Database('./results.sqlite3');
+
+db.run("CREATE TABLE IF NOT EXISTS testcase (id INTEGER, test TEXT, input TEXT, error BOOLEAN, outputs TEXT, reason TEXT)");
+
+async function multiRunner(count, list) {
+  let runners = []; 
+  for (let i = 0; i < count; i++) {
+  
+    runners.push((async function() {
+      console.log(`${i} next test`);
+      let next;
+      while ((next = list.pop())) {
+        await doTest(next.method, next.input);
+      }
+    })());
+  }
+  await Promise.all(runners);
+}
 
 function generateNodeTest(methodName, methodInput, codeToLoadPolyfill) {
   let template = '';
@@ -30,145 +50,157 @@ function generateFirefoxTest(methodName, methodInput) {
   return template;
 }
 
-function splitDeliminatorReadToEndOfLine(output, index) {
-  const deliminatorIndex = output.indexOf(':', index);
-  const eolIndex = output.indexOf('\n', deliminatorIndex);
-  if (eolIndex != -1) {
-    return output.slice(deliminatorIndex + 1, eolIndex).trim();
-  } else {
-    return output.slice(deliminatorIndex + 1);
-  }
+async function runTest(test, runner) {
+  let result = undefined;
+  let error = undefined;
+
+  await runner(test, function(line) {
+    try {
+      line = '' + line;
+      const indexResult = line.indexOf('STD:');
+      if (indexResult != -1) {
+        result = JSON.parse(line.substr(indexResult + 4));
+      }
+      const indexOfErr = line.indexOf('FN THROW ERR:');
+      if (indexOfErr != -1) {
+        error = line.substr(indexOfErr + 'FN THROW ERR:'.length);
+      }
+    } catch (e) {
+      console.log(`Test Case Error ${e}`);
+    }  
+  });
+
+  return {
+    test: test,
+    result: result,
+    error: error,
+    sys_error: (result === undefined && error === undefined) ? 'Interpreter failed to execute testcase' : undefined
+  };
 }
 
-function runTest(test, runner) {
-  const output = runner(test);
-  const indexOfResult = output.indexOf('STD:');
-  const indexOfErr = output.indexOf('FN THROW ERR:');
-
-  if (indexOfResult != -1) {
-    const jsonResult = splitDeliminatorReadToEndOfLine(output, indexOfResult);
-    return {
-      test: test,
-      result: JSON.parse(jsonResult)
-    };
-  } else if (indexOfErr != -1) {
-    return {
-      test: test,
-      result: undefined,
-      error: splitDeliminatorReadToEndOfLine(output, indexOfErr)
-    };
-  } else {
-    console.log('Test case failed! with: ' + output);
-    return {
-      sys_error: 'Interpreter failed to execute testcase'
-    };
-  }
-}
-
-function nodeJsRunner(testcase) {
-  console.log(`Launching Node: ${testcase}`);
-  return child_process.spawnSync('node', [testcase]).stdout.toString();
-}
-
-function quickJsRunner(testcase) {
-  console.log(`Launching QJS: ${testcase}`);
-  return child_process.spawnSync('../../quickjs/qjs', [testcase]).stdout.toString();
-}
-
-function spidermonkeyRunner(testcase) {
-  console.log(`Launching SpiderMonkey: ${testcase}`);
-  return child_process.spawnSync('js59', [testcase]).stdout.toString();
-}
-
-function firefoxRunner(testcase) {
-  console.log(`Launching FF: ${testcase}`);
-  return child_process.spawnSync('firefox', ['-console', testcase]).stdout.toString();
+async function cliRunner(program, testcase, lineFeedback) {
+  const child = spawn(program, [ testcase ], {encoding: 'utf8'});
+  child.stdout.on('data', lineFeedback);
+  child.stderr.on('data', lineFeedback);
+  let done = setTimeout(function(){
+    console.log(`Testcase ${testcase} hit timeout`);
+    child.kill()
+  }, 2000);
+  await child;
+  clearTimeout(done);
 }
 
 let numberOfWrittenTests = 0;
 
-function writeTest(testName, test, suffix) {
+async function writeTest(testName, test, suffix) {
   const newTestFilename = `dst/${testName}_${numberOfWrittenTests}.${suffix}`;
   fs.writeFileSync(newTestFilename, test);
   numberOfWrittenTests += 1;
-  child_process.spawnSync('browserify', [newTestFilename, '-o', newTestFilename + '.rewritten.js']);
+  await spawn('browserify', [newTestFilename, '-o', newTestFilename + '.rewritten.js']);
   return newTestFilename + '.rewritten.js';
 }
 
-function cmpTc(output, pre, input, resultList, errorList) {
+let testcaseGlobalId = 0;
 
-  function flag(x) {
-    output.input = input;
-    console.log(pre + x + ' ' + JSON.stringify(output));
+function cmpTestcases(methodName, input, outputs) {
+
+  //We attach a global ID to the testcase to allow us to find multiple errors from the SQL output
+
+  //Error cases we care about for test case runner
+  //1. Some error, some give output
+  //2. Outputs differ
+
+  //How we do this
+  //Sort the output errorList
+  //If typeof(errorList[0]) != typeof(errorList[-1]) then some elements throw and some don't (error 1) (A1)
+  //Sort the output results
+  //If not A1 and outputs[x] !== outputs[x - 1] for all 0 < x < outputs.length then 2.
+
+  function flag(reason, divergingOutput) {
+    const insertTestcase = db.prepare("INSERT INTO testcase VALUES (?, ?, ?, ?, ?, ?)");
+    insertTestcase.run(testcaseGlobalId++, methodName, input, reason.length > 0, JSON.stringify(outputs), reason + (divergingOutput ? (' diverged on ' + divergingOutput.test) : '')); 
+    insertTestcase.finalize();
   }
 
-  if (output.result !== undefined) {
-    let foundDivergence = resultList.find(x => x !== output.result);
+  outputs.sort((v1, v2) => v2.error < v2.error);
 
-    if (foundDivergence) {
-      flag('different result from previous ' + foundDivergence);
-    }
+//  let errorsInconsistent = outputs[0].error !== outputs[outputs.length - 1].error;
 
-    resultList.push(output.result);
-  } else if (resultList.length) {
-    flag('threw when other tests have given results');
-  }
-
-  if (output.error !== undefined) {
-    let foundDivergence = errorList.find(x => x != output.error);
-    if (foundDivergence) {
-      flag('different error message from previous error ' + foundDivergence);
-    }
-    errorList.push(output.error);
-  } else if (errors.length) {
-    flag('Testcase disagrees with others, does not throw instead has value ' + output.result);
-  }
-}
-
-function doTest(methodName, input) {
-
-  let tests = [
-    writeTest(`native_${methodName}`, generateNodeTest(methodName, input), 'js'),
-    writeTest(`corejs_${methodName}`, generateNodeTest(methodName, input, 'require(\'core-js\')'), 'js'),
-    writeTest(`mdn_${methodName}`, generateNodeTest(methodName, input, `require('mdn-polyfills/${methodName}');`), 'js')
-  ]; 
-  
-  let outputs = {};
-
-  for (let testCase of tests) {
-    outputs[testCase] = [];
-    outputs[testCase].push(runTest(testCase, nodeJsRunner));
-    outputs[testCase].push(runTest(testCase, quickJsRunner));
-    outputs[testCase].push(runTest(testCase, spidermonkeyRunner));
-  }
-
-  let ores = [];
-  let oerr = [];
-
-  for (testCase in outputs) {
-    let results = [];
-    let errors = [];
-    let thisTestcaseOutputs = outputs[testCase];
-    for (let output of thisTestcaseOutputs) {
-      if (output.sys_error) {
-        console.log(`FATAL: TC Failed with ${JSON.stringify(output)} ${JSON.stringify(input)}`);
-        continue;
+  if (typeof(outputs[0].error) !== typeof(outputs[outputs.length - 1].error)) {
+    flag('Some testcases throw, others do not', outputs[outputs.length - 1]);
+  } else {
+    outputs.sort((v1, v2) => v1.result - v2.result);
+    let divergingOutput;
+    for (let i = 1; i < outputs.length; i++) {
+      if (outputs[i].result !== outputs[i - 1].result) {
+        divergingOutput = outputs[i];
       }
-      cmpTc(output, 'SAMEINTERPRETER:', input, results, errors);
-      cmpTc(output, 'OVERALL:', input, ores, oerr);
     }
+    if (divergingOutput) {
+      flag('Some outputs differ', divergingOutput);
+    } else {
+      flag('');
+    }
+  } 
+}
+
+/**
+ * Here we execute our test cases.
+ * First, we execute all the native interpreter methods (testAll)
+ * Next, we execute our polyfills just in Node (Some break in other interpreters)
+ */
+async function doTest(methodName, input) {
+
+  try {
+
+    let testsAll = [
+      await writeTest(`native_${methodName}`, generateNodeTest(methodName, input), 'js'),
+    ]; 
+    
+    let outputs = [];
+
+    for (let testCase of testsAll) {
+      outputs.push(await runTest(testCase, cliRunner.bind(null, 'node')));
+      outputs.push(await runTest(testCase, cliRunner.bind(null, '../../quickjs/qjs')));
+      outputs.push(await runTest(testCase, cliRunner.bind(null, 'js59')));
+    }
+
+    let testsJustNode = [
+      await writeTest(`corejs_${methodName}`, generateNodeTest(methodName, input, 'require(\'core-js\')'), 'js'),
+      await writeTest(`mdn_${methodName}`, generateNodeTest(methodName, input, `require('mdn-polyfills/${methodName}');`), 'js')
+    ];
+
+    for (let testCase of testsJustNode) {
+      outputs.push(await runTest(testCase, cliRunner.bind(null, 'node')));
+    }
+
+    outputs = outputs.filter(output => !output.sys_error);
+    if (outputs.length) {
+      cmpTestcases(methodName, input, outputs);
+    } else {
+      console.log(`${methodName}:${input} all testcases failed`);
+    }
+  } catch (e) {
+    console.log(`Testcase: ${methodName} ${JSON.stringify(input)} has failed because ${e} ${e.stack}`);
   }
 }
 
-const readline = require('readline');
+(async function() {
+  const readline = require('readline');
+  
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+    terminal: false
+  });
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-  terminal: false
-});
+  let tests = [];
+  
+  rl.on('line', function(line) {
+    tests.push(JSON.parse(line));
+  });
 
-rl.on('line', function(line) {
-  const details = JSON.parse(line);
-  doTest(details.method, details.input);
-});
+  rl.on('close', async function() {
+    multiRunner(16, tests);
+  });
+})();
