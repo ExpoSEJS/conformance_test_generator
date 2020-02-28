@@ -85,7 +85,7 @@ async function cliRunner(program, testcase, lineFeedback) {
   let done = setTimeout(function(){
     console.log(`Testcase ${testcase} hit timeout`);
     child.kill()
-  }, 2000);
+  }, 10000);
   await child;
   clearTimeout(done);
 }
@@ -131,13 +131,15 @@ function cmpTestcases(methodName, input, outputs) {
   } else {
     outputs.sort((v1, v2) => v1.result - v2.result);
     let divergingOutput;
+    let divergingReason;
     for (let i = 1; i < outputs.length; i++) {
-      if (outputs[i].result !== outputs[i - 1].result) {
-        divergingOutput = outputs[i];
+      if (outputs[i].result !== outputs[i - 1].result) { 
+       divergingOutput = outputs[i];
+       divergingReason = (` ${outputs[i].result} !== ${outputs[i-1].result} (${typeof(outputs[i].result)}, ${typeof(outputs[i - 1].result)}`);
       }
     }
     if (divergingOutput) {
-      flag('Some outputs differ', divergingOutput);
+      flag('Some outputs differ ' + divergingReason, divergingOutput);
     } else {
       flag('');
     }
@@ -160,9 +162,9 @@ async function doTest(methodName, input) {
     let outputs = [];
 
     for (let testCase of testsAll) {
-      outputs.push(await runTest(testCase, cliRunner.bind(null, 'node')));
-      outputs.push(await runTest(testCase, cliRunner.bind(null, '../../quickjs/qjs')));
-      outputs.push(await runTest(testCase, cliRunner.bind(null, 'js59')));
+      outputs.push(await runTest(testCase + '_node', cliRunner.bind(null, 'node')));
+      outputs.push(await runTest(testCase + '_quickjs', cliRunner.bind(null, '../../quickjs/qjs')));
+      outputs.push(await runTest(testCase + '_js59', cliRunner.bind(null, 'js59')));
     }
 
     let testsJustNode = [
