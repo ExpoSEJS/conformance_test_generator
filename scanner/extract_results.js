@@ -1,5 +1,22 @@
 const fs = require('fs');
 
+function deConc(base, depth) {
+
+  if (base && typeof(base.concrete) !== 'undefined') {
+    base = base.concrete;
+  }
+
+  if (!depth) {
+    return base;
+  }
+
+  if (base) {
+    for (let i in base) {
+      base[i] = deConc(base[i], depth - 1);
+    }
+  }
+}
+
 for (let targetI = 2; targetI < process.argv.length; targetI++) {
   const filename = process.argv[targetI];
   const methodName = filename.substr(filename.lastIndexOf('/') + 1);
@@ -17,9 +34,7 @@ for (let targetI = 2; targetI < process.argv.length; targetI++) {
       }
       const args = JSON.parse(line[1]);
      
-      if (base && typeof(base.concrete) !== 'undefined') {
-        base = base.concrete;
-      }
+      base = deConc(base, 5); 
    
       let inputLine = '';
   
@@ -33,9 +48,7 @@ for (let targetI = 2; targetI < process.argv.length; targetI++) {
       adda(base);
       
       for (let i = 0; i < args.length; i++) {
-        if (args[i] && typeof(args[i].concrete) !== 'undefined') {
-          args[i] = args[i].concrete;
-        }
+        args[i] = deConc(args[i], 5);
         inputLine += ',';
         adda(args[i]);
       }
