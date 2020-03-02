@@ -1,3 +1,5 @@
+const ProgressBar = require('progress');
+let progress; 
 const fs = require('fs');
 const child_process = require('child_process');
 const { exec, spawn, fork, execFile } = require('promisify-child-process')
@@ -11,10 +13,10 @@ async function multiRunner(count, list) {
   for (let i = 0; i < count; i++) {
   
     runners.push((async function() {
-      console.log(`${i} next test`);
       let next;
       while ((next = list.pop())) {
         await doTest(next.method, next.input);
+        progress.tick();
       }
     })());
   }
@@ -50,7 +52,7 @@ function generateFirefoxTest(methodName, methodInput) {
   return template;
 }
 
-async function runTest(test, runner) {
+async function runTest(test, interp, runner) {
   let result = undefined;
   let error = undefined;
 
@@ -59,6 +61,7 @@ async function runTest(test, runner) {
       line = '' + line;
       const indexResult = line.indexOf('STD:');
       if (indexResult != -1) {
+        //console.log('Line: ' + line);
         result = JSON.parse(line.substr(indexResult + 4));
       }
       const indexOfErr = line.indexOf('FN THROW ERR:');
@@ -66,12 +69,13 @@ async function runTest(test, runner) {
         error = line.substr(indexOfErr + 'FN THROW ERR:'.length);
       }
     } catch (e) {
-      console.log(`Test Case Error ${e}`);
+      progress.interrupt(`Test Case Error ${e}`);
     }  
   });
 
   return {
     test: test,
+    interpreter: interp,
     result: result,
     error: error,
     sys_error: (result === undefined && error === undefined) ? 'Interpreter failed to execute testcase' : undefined
@@ -83,7 +87,7 @@ async function cliRunner(program, testcase, lineFeedback) {
   child.stdout.on('data', lineFeedback);
   child.stderr.on('data', lineFeedback);
   let done = setTimeout(function(){
-    console.log(`Testcase ${testcase} hit timeout`);
+    progress.interrupt(`Testcase ${testcase} hit timeout`);
     child.kill()
   }, 10000);
   await child;
@@ -162,9 +166,9 @@ async function doTest(methodName, input) {
     let outputs = [];
 
     for (let testCase of testsAll) {
-      outputs.push(await runTest(testCase + '_node', cliRunner.bind(null, 'node')));
-      outputs.push(await runTest(testCase + '_quickjs', cliRunner.bind(null, '../../quickjs/qjs')));
-      outputs.push(await runTest(testCase + '_js59', cliRunner.bind(null, 'js59')));
+      outputs.push(await runTest(testCase, 'node', cliRunner.bind(null, 'node')));
+      outputs.push(await runTest(testCase, 'quickjs', cliRunner.bind(null, '../../quickjs/qjs')));
+      outputs.push(await runTest(testCase, 'js59', cliRunner.bind(null, 'js59')));
     }
 
     let testsJustNode = [
@@ -173,17 +177,17 @@ async function doTest(methodName, input) {
     ];
 
     for (let testCase of testsJustNode) {
-      outputs.push(await runTest(testCase, cliRunner.bind(null, 'node')));
+      outputs.push(await runTest(testCase, 'node', cliRunner.bind(null, 'node')));
     }
 
     outputs = outputs.filter(output => !output.sys_error);
     if (outputs.length) {
       cmpTestcases(methodName, input, outputs);
     } else {
-      console.log(`${methodName}:${input} all testcases failed`);
+      progress.interrupt(`${methodName}:${input} all testcases failed`);
     }
   } catch (e) {
-    console.log(`Testcase: ${methodName} ${JSON.stringify(input)} has failed because ${e} ${e.stack}`);
+    progress.interrupt(`Testcase: ${methodName} ${JSON.stringify(input)} has failed because ${e} ${e.stack}`);
   }
 }
 
@@ -203,6 +207,8 @@ async function doTest(methodName, input) {
   });
 
   rl.on('close', async function() {
-    multiRunner(16, tests);
+    progress = new ProgressBar(':current / :total # :bar', { total: tests.length });
+    progress.interrupt('Set total to ' + tests.length);
+    multiRunner(require('os').cpus().length, tests);
   });
 })();
